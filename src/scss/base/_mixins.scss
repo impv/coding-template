@@ -1,0 +1,35 @@
+// -------------------------------------------------------------------
+//  mixins.scss
+// -------------------------------------------------------------------
+
+@mixin clearfix {
+  zoom: 1;
+  &:after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}
+
+@mixin media($mediaSize) {
+  @if $mediaSize == pc_min {
+    // PC用
+    @media screen and (max-width: $BREAK_POINT_PC) {
+      @content;
+    }
+  } @else if $mediaSize == pc {
+    // PC用 min
+    @media screen and (min-width: $BREAK_POINT_SP) {
+      @content;
+    }
+  } @else if $mediaSize == sp {
+    // SP用
+    @media screen and (max-width: $BREAK_POINT_SP) {
+      @content;
+    }
+  } @else if $mediaSize == landscape {
+    @media only screen and (orientation: landscape) {
+      @content;
+    }
+  }
+}

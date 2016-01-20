@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% include "components/_meta.html" %}
+  {% block meta %}{% endblock %}
+  <title>{% block title %}WEBSITE TITLE{% endblock %}</title>
+  {% include "components/_css.html" %}
+  {% block css %}{% endblock %}
+</head>
+<body>
+  <h1>componentに渡す変数のサンプル</h1>
+  {% set path = ".." %}
+  {% include "components/_sample.html" %}
+</body>
+</html>
