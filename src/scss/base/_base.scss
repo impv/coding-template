@@ -1,23 +1,17 @@
-// -------------------------------------------------------------------
-//  structure.scss
-// -------------------------------------------------------------------
-
-@import "font-size-rem";
-
 html {
-  font-size: $FONT_SIZE;
+  background: $color-bg;
+  font-size: $font-size;
   height: 100%;
-  background: $COLOR_BG;
 }
 
 body {
-  font-size: $FONT_SIZE;
-  font-family: $FONT_FAMILY;
-  background: $COLOR_BG;
-  color: $COLOR_TEXT;
-  line-height: $LINE_HEIGHT;
+  background: $color-bg;
+  color: $color-text;
+  font-family: $font-family;
+  font-size: $font-size;
+  line-height: $line-height;
 }
 
-.content_base {
-  width: $SITE_WIDTH;
+.content-base {
+  width: $site-width;
 }

@@ -1,8 +1,4 @@
-/**
- * Address styling not present in IE 8/9.
- */
-
 mark {
-  background: #ff0;
-  color: #000;
+  background: $color-yellow;
+  color: $color-link;
 }
