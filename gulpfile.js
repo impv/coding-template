@@ -7,6 +7,7 @@ var sass         = require('gulp-sass');
 var scsslint     = require('gulp-scss-lint');
 var autoprefixer = require('gulp-autoprefixer');
 var nunjucks     = require('gulp-nunjucks');
+var htmllint     = require('gulp-html5-lint');
 var plumber      = require('gulp-plumber');
 var runSequence  = require('run-sequence');
 var rimraf       = require('rimraf');
@@ -26,6 +27,7 @@ var conf = {
   },
   html: {
     src: ['./src/html/**/*.html', '!./src/html/**/_*.html'],
+    build: './build/**/*.html',
     watch: './src/html/**/*.html',
     dest: './build/'
   },
@@ -91,6 +93,16 @@ gulp.task('sass-build', ['sass-lint'], function() {
 
 
 // 
+// HTML の文法チェック
+// ========================================
+gulp.task('html-lint', ['html-build'], function() {
+  return gulp.src(conf['html']['build'])
+    .pipe(plumber())
+    .pipe(htmllint())
+});
+
+
+// 
 // HTMLテンプレート(nunjucks) のコンパイル
 // ========================================
 gulp.task('html-build', function() {
@@ -119,7 +131,7 @@ gulp.task('build', function() {
     [
       'babel-build',
       'sass-build',
-      'html-build',
+      'html-lint',
       'static-copy',
     ]
   );
@@ -132,7 +144,7 @@ gulp.task('build', function() {
 gulp.task('watch', ['build'], function(callback) {
   gulp.watch(conf['babel']['src'], ['babel-build']);
   gulp.watch(conf['sass']['src'], ['sass-build']);
-  gulp.watch(conf['html']['watch'], ['html-build']);
+  gulp.watch(conf['html']['watch'], ['html-lint']);
   gulp.watch(conf['statics']['src'], ['static-copy']);
 });
 

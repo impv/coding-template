@@ -45,10 +45,7 @@ a:active,
 a:hover {
   outline: 0; }
 
-/**
- * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
- */
-abbr[title] {
+[title] {
   border-bottom: 1px dotted; }
 
 b,
@@ -282,14 +279,14 @@ button::-moz-focus-inner {
 
 html {
   background: #fff;
-  font-size: 14rem;
+  font-size: 1rem;
   height: 100%; }
 
 body {
   background: #fff;
   color: #000;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Osaka", sans-serif;
-  font-size: 14rem;
+  font-size: 1rem;
   line-height: 1.5; }
 
 .content-base {
