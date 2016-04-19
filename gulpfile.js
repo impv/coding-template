@@ -93,16 +93,6 @@ gulp.task('sass-build', function() {
 
 
 // 
-// HTML の文法チェック
-// ========================================
-gulp.task('html-lint', ['html-build'], function() {
-  return gulp.src(conf['html']['build'])
-    .pipe(plumber())
-    .pipe(htmllint())
-});
-
-
-// 
 // HTMLテンプレート(nunjucks) のコンパイル
 // ========================================
 gulp.task('html-build', function() {
@@ -131,7 +121,7 @@ gulp.task('build', function() {
     [
       'babel-build',
       'sass-build',
-      'html-lint',
+      'html-build',
       'static-copy',
     ]
   );
@@ -144,7 +134,7 @@ gulp.task('build', function() {
 gulp.task('watch', ['build'], function(callback) {
   gulp.watch(conf['babel']['src'], ['babel-build']);
   gulp.watch(conf['sass']['src'], ['sass-build']);
-  gulp.watch(conf['html']['watch'], ['html-lint']);
+  gulp.watch(conf['html']['watch'], ['html-build']);
   gulp.watch(conf['statics']['src'], ['static-copy']);
 });
 
