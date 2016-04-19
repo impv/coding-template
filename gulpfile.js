@@ -2,23 +2,29 @@ var gulp         = require("gulp");
 var browserify   = require("browserify");
 var babelify     = require('babelify');
 var source       = require('vinyl-source-stream');
+var buffer       = require('vinyl-buffer');
 var eslint       = require('gulp-eslint');
 var sass         = require('gulp-sass');
 var scsslint     = require('gulp-scss-lint');
+var sourcemap    = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var nunjucks     = require('gulp-nunjucks');
 var htmllint     = require('gulp-html5-lint');
 var plumber      = require('gulp-plumber');
+var gulpif       = require('gulp-if');
 var runSequence  = require('run-sequence');
 var rimraf       = require('rimraf');
+var minimist     = require('minimist');
 var webserver    = require('gulp-webserver');
 
+var argv = minimist(process.argv.slice(2));
+var RELEASE = !! argv.release;
 
 var conf = {
   babel: {
-    src: './src/babel/**/*.es6',
+    src: './src/babel/**/*.js',
     dist: './build/js/',
-    entrypoint: './src/babel/index.es6'
+    entrypoint: './src/babel/index.js'
   },
   sass: {
     src: './src/scss/**/*.scss',
@@ -64,6 +70,9 @@ gulp.task('babel-build', ['babel-lint'], function() {
       console.log("Error : " + err.message);
     })
     .pipe(source('index.js'))
+    .pipe(buffer())
+    .pipe(sourcemap.init({loadMaps: true}))
+    .pipe(gulpif(! RELEASE, sourcemap.write('./')))
     .pipe(gulp.dest(conf['babel']['dist']))
 });
 
@@ -83,7 +92,9 @@ gulp.task('sass-lint', function() {
 // ========================================
 gulp.task('sass-build', ['sass-lint'], function() {
   return gulp.src(conf['sass']['src'])
+    .pipe(sourcemap.init())
     .pipe(sass(conf['sass']['option']).on('error', sass.logError))
+    .pipe(gulpif(! RELEASE, sourcemap.write()))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
@@ -163,6 +174,7 @@ gulp.task('clean', function(callback) {
 gulp.task('serve', ['build'], function() {
   gulp.src('./build')
     .pipe(webserver({
+      host: '0.0.0.0',
       livereload: true,
       port: conf['server']['port']
     }));
