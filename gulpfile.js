@@ -5,7 +5,6 @@ var source       = require('vinyl-source-stream');
 var buffer       = require('vinyl-buffer');
 var eslint       = require('gulp-eslint');
 var sass         = require('gulp-sass');
-var scsslint     = require('gulp-scss-lint');
 var sourcemap    = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var nunjucks     = require('gulp-nunjucks');
@@ -78,19 +77,9 @@ gulp.task('babel-build', ['babel-lint'], function() {
 
 
 // 
-// SCSS の文法チェック
-// ========================================
-gulp.task('sass-lint', function() {
-  return gulp.src(conf['sass']['src'])
-    .pipe(plumber())
-    .pipe(scsslint())
-});
-
-
-// 
 // SCSS のコンパイル
 // ========================================
-gulp.task('sass-build', ['sass-lint'], function() {
+gulp.task('sass-build', function() {
   return gulp.src(conf['sass']['src'])
     .pipe(sourcemap.init())
     .pipe(sass(conf['sass']['option']).on('error', sass.logError))
