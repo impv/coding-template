@@ -41,7 +41,7 @@ var conf = {
     dest: './build/'
   },
   server: {
-    port: 8888
+    port: 3000
   }
 }
 
