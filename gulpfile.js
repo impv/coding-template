@@ -8,7 +8,6 @@ var sass         = require('gulp-sass');
 var sourcemap    = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var nunjucks     = require('gulp-nunjucks');
-var htmllint     = require('gulp-html5-lint');
 var plumber      = require('gulp-plumber');
 var gulpif       = require('gulp-if');
 var runSequence  = require('run-sequence');
