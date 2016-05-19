@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   background: $color-bg;
   font-size: $font-size;
@@ -12,6 +16,79 @@ body {
   line-height: $line-height;
 }
 
+h1 {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 1.4rem;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+h5 {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+  transition: all ease 200ms;
+  
+  &:link {
+    color: $color-link;
+  }
+  
+  &:visited {
+    color: $color-link-visited;
+  }
+  
+  &:hover {
+    color: $color-link-hover;
+  }
+  
+  &:active {
+    color: $color-link-active;
+  }
+  
+  &:focus {
+    color: $color-link-focus;
+  }
+}
+
+
 .content-base {
   width: $site-width;
+  margin: 0 auto;
+
+  @include media(sp) {
+    width: auto;
+    padding: 0 20px;
+  }
+
+  @include media(tablet) {
+    width: auto;
+    padding: 0 20px;
+  }
+}
+
+.page-header {
+	background: $color-primary;
+	padding: 60px 0;
+	color: $color-white;
+}
+
+.page-content {
+  padding: 40px 0;
 }

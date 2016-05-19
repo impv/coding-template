@@ -11,17 +11,28 @@
 // ------------------------------------
 @import 'base/base';
 
-// common
+// parts
 // ------------------------------------
-@import 'common/button';
-@import 'common/form';
-@import 'common/icon';
-@import 'common/label';
-@import 'common/list';
-@import 'common/table';
-@import 'common/typography';
+@import 'parts/buttons';
+@import 'parts/forms';
+@import 'parts/icons';
+@import 'parts/labels';
+@import 'parts/lists';
+@import 'parts/panels';
+@import 'parts/tables';
+@import 'parts/titles';
+@import 'parts/text';
 
 // components
 // ------------------------------------
+@import 'components/component';
 @import 'components/header';
 @import 'components/footer';
+
+// layout
+// ------------------------------------
+@import 'layout/layout';
+
+// page
+// ------------------------------------
+@import 'page/index';

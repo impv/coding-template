@@ -1,12 +1,222 @@
-{% extends "layout/_base.html" %}
+{% extends "layout/layout-a.html" %}
 
-{% block title %}TEST WEBSITE TITLE{% endblock %}
+{% block page_header %}
+<div class="page-header">
+	<section>
+		<div class="content-base">
+			<h2 class="page-title">PARTS</h2>
 
-{% block js %}
+			<p>パーツ</p>
+		</div>
+	</section>
+</div>
 {% endblock %}
 
-{% block css %}
-{% endblock %}
+{% block page_content %}
+<div class="page-content">
 
-{% block body %}
+	<div class="content-base">
+
+		<section class="component" id="layout">
+			<h1 class="component-title">Layouts <span class="sub">− レイアウト</span></h1>
+
+			<section class="component">
+				<div class="layout col-2">
+					<div class="col half"><span class="box"></span></div>
+					<div class="col half"><span class="box"></span></div>
+				</div>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<div class="layout col-2">
+					<div class="col s"><span class="box"></span></div>
+					<div class="col l"><span class="box"></span></div>
+				</div>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<div class="layout col-2">
+					<div class="col l"><span class="box"></span></div>
+					<div class="col s"><span class="box"></span></div>
+				</div>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<div class="layout col-3">
+					<div class="col"><span class="box"></span></div>
+					<div class="col"><span class="box"></span></div>
+					<div class="col"><span class="box"></span></div>
+				</div>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<div class="layout col-4">
+					<div class="col"><span class="box"></span></div>
+					<div class="col"><span class="box"></span></div>
+					<div class="col"><span class="box"></span></div>
+					<div class="col"><span class="box"></span></div>
+				</div>
+			</section><!-- /.component -->
+
+		</section><!-- /#layout -->
+
+		<section class="component" id="tables">
+			<h1 class="component-title">Tables <span class="sub">− テーブル</span></h1>
+			
+			<section class="component">
+				<table class="table closed">
+					<tr>
+						<th>見出し</th>
+						<td>内容</td>
+						<td>内容</td>
+						<td>内容</td>
+					</tr>
+					<tr>
+						<th>見出し</th>
+						<td>内容</td>
+						<td>内容</td>
+						<td>内容</td>
+					</tr>
+					<tr>
+						<th>見出し</th>
+						<td>内容</td>
+						<td>内容</td>
+						<td>内容</td>
+					</tr>
+				</table>
+			</section><!-- /.component -->
+			
+			<section class="component">
+				<table class="table opened">
+					<tr>
+						<th>見出し</th>
+						<th>見出し</th>
+						<th>見出し</th>
+						<th>見出し</th>
+					</tr>
+					<tr>
+						<td>内容</td>
+						<td>内容</td>
+						<td>内容</td>
+						<td>内容</td>
+					</tr>
+					<tr>
+						<td>内容</td>
+						<td>内容</td>
+						<td>内容</td>
+						<td>内容</td>
+					</tr>
+				</table>
+			</section><!-- /.component -->
+
+		</section><!-- /table -->
+
+		<section class="component" id="lists">
+			<h1 class="component-title">Lists <span class="sub">− リスト</span></h1>
+
+			<section class="component">
+				<ul class="list notice">
+					<li>リスト項目</li>
+					<li>リスト項目</li>
+					<li>リスト項目</li>
+					<li>リスト項目</li>
+				</ul>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<ul class="list disk">
+					<li>リスト項目</li>
+					<li>リスト項目</li>
+					<li>リスト項目</li>
+					<li>リスト項目</li>
+				</ul>
+			</section><!-- /.component -->
+			
+			<section class="component">
+				<ul class="list border">
+					<li>リスト項目</li>
+					<li>リスト項目</li>
+					<li>リスト項目</li>
+					<li>リスト項目</li>
+				</ul>
+			</section><!-- /.component -->
+
+		</section>
+
+		<section class="component" id="buttons">
+			<h1 class="component-title">Buttons <span class="sub">− ボタン</span></h1>
+
+			<section class="component">
+				<a href="javascript: void(0)" class="button s">ボタン小</a>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<a href="javascript: void(0)" class="button m">ボタン中</a>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<a href="javascript: void(0)" class="button l">ボタン大</a>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<a href="javascript: void(0)" class="button fix s">ボタン固定幅 小</a>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<a href="javascript: void(0)" class="button fix m">ボタン固定幅 中</a>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<a href="javascript: void(0)" class="button fix l">ボタン固定幅 大</a>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<a href="javascript: void(0)" class="button block">ボタンブロック</a>
+			</section><!-- /.component -->
+		</section><!-- /#button -->
+
+		<section class="component" id="titles">
+			<h1 class="component-title">Titles <span class="sub">− 見出し</span></h1>
+
+			<section class="component">
+				<h1>見出し</h1>
+			</section><!-- /.component -->
+			<section class="component">
+				<h2>見出し</h2>
+			</section><!-- /.component -->
+			<section class="component">
+				<h3>見出し</h3>
+			</section><!-- /.component -->
+			<section class="component">
+				<h4>見出し</h4>
+			</section><!-- /.component -->
+		</section><!-- /#titles -->
+
+		<section class="component" id="text">
+			<h1 class="component-title">Text <span class="sub">− 文章</span></h1>
+
+			<section class="component">
+				<p class="text ll">患者さま中心のチーム医療の実践と、患者さまを中心に考える組織風土の醸成のために、一緒に働きたいという意欲をお持ちの方を希望いたします。</p>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<p class="text l">患者さま中心のチーム医療の実践と、患者さまを中心に考える組織風土の醸成のために、一緒に働きたいという意欲をお持ちの方を希望いたします。</p>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<p class="text m">患者さま中心のチーム医療の実践と、患者さまを中心に考える組織風土の醸成のために、一緒に働きたいという意欲をお持ちの方を希望いたします。</p>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<p class="text s">患者さま中心のチーム医療の実践と、患者さまを中心に考える組織風土の醸成のために、一緒に働きたいという意欲をお持ちの方を希望いたします。</p>
+			</section><!-- /.component -->
+
+			<section class="component">
+				<p class="text ss">患者さま中心のチーム医療の実践と、患者さまを中心に考える組織風土の醸成のために、一緒に働きたいという意欲をお持ちの方を希望いたします。</p>
+			</section><!-- /.component -->
+		</section><!-- /#titles -->
+
+	</div><!-- /.content-base -->
+
+</div>
 {% endblock %}

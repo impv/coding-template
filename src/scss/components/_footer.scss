@@ -1,0 +1,13 @@
+footer {
+	background: #f6f6f6;
+	border-top: 1px solid $color-border;
+	padding: 20px;
+
+	.company-logo {
+		text-align: right;
+
+		img {
+			width: 110px;
+		}
+	}
+}

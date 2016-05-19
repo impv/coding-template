@@ -1,0 +1,51 @@
+$margin: 20px;
+
+.layout {
+	@include clearfix;
+
+	display: flex;
+
+	&.col-2 {
+
+		> .col {
+			width: ($break-point-pc - $margin) / 2;
+			margin-right: $margin;
+
+			&:nth-child(2n) {
+				margin-right: 0;
+			}
+
+			&.s {
+				width: ($break-point-pc - $margin) / 4;
+			}
+
+			&.l {
+				width: ($break-point-pc - $margin) / 4 * 3;
+			}
+		}
+	}
+
+	&.col-3 {
+
+		> .col {
+			width: ($break-point-pc - $margin * 2) / 3;
+			margin-right: $margin;
+
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+		}
+	}
+
+	&.col-4 {
+
+		> .col {
+			width: ($break-point-pc - $margin * 3) / 4;
+			margin-right: $margin;
+
+			&:nth-child(4n) {
+				margin-right: 0;
+			}
+		}
+	}
+}
