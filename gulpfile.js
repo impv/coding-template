@@ -44,20 +44,25 @@ var conf = {
   }
 }
 
-
-// 
+//
 // Babel(ECMAScript6) の文法チェック
 // ========================================
 gulp.task('babel-lint', function() {
   return gulp.src(conf['babel']['src'])
     .pipe(plumber())
-    .pipe(eslint({useEslintrc: true}))
+    .pipe(eslint({
+      useEslintrc: true,
+      ecmaFeatures: {
+        modules: true,
+        blockBindings: true
+      }
+    }))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
 
 
-// 
+//
 // Babel(ECMAScript6) をJSにコンパイル
 // ========================================
 gulp.task('babel-build', ['babel-lint'], function() {
@@ -75,7 +80,7 @@ gulp.task('babel-build', ['babel-lint'], function() {
 });
 
 
-// 
+//
 // SCSS のコンパイル
 // ========================================
 gulp.task('sass-build', function() {
@@ -91,7 +96,7 @@ gulp.task('sass-build', function() {
 });
 
 
-// 
+//
 // HTMLテンプレート(nunjucks) のコンパイル
 // ========================================
 gulp.task('html-build', function() {
@@ -103,7 +108,7 @@ gulp.task('html-build', function() {
 });
 
 
-// 
+//
 // 静的ファイルのコピー
 // ========================================
 gulp.task('static-copy', function() {
@@ -112,7 +117,7 @@ gulp.task('static-copy', function() {
 })
 
 
-// 
+//
 // 全ビルド & コピータスクの実行
 // ========================================
 gulp.task('build', function() {
@@ -127,7 +132,7 @@ gulp.task('build', function() {
 });
 
 
-// 
+//
 // ファイルが更新されたらビルドを実行
 // ========================================
 gulp.task('watch', ['build'], function(callback) {
@@ -138,7 +143,7 @@ gulp.task('watch', ['build'], function(callback) {
 });
 
 
-// 
+//
 // コンパイル済みファイルの削除
 // ========================================
 gulp.task('clean', function(callback) {
@@ -146,7 +151,7 @@ gulp.task('clean', function(callback) {
 });
 
 
-// 
+//
 // プレビューサーバーの起動
 // ========================================
 gulp.task('serve', ['build'], function() {
