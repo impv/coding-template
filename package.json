@@ -1,0 +1,47 @@
+{
+  "private": true,
+  "name": "coding-template",
+  "version": "1.0.0",
+  "description": "Coding template for Impressive developers.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently 'npm run watch:css' 'npm run postcss' 'npm run watch:js' 'npm run nunjucks'",
+    "postcss": "postcss ./build/css/style.css -u autoprefixer -d ./build/css -w",
+    "nunjucks": "nunjucks -w '**/*.html' -p ./src/html/ -o ./build -u",
+    "watch:css": "node-sass -w -r --include-path scss ./src/scss/style.scss ./build/css/style.css && postcss",
+    "watch:js": "mkdir -p ./build/js && babel -w ./src/babel/index.js -o ./build/js/bundle.js",
+    "lint:js": "eslint './src/babel/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "safari >= 7"
+  ],
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://oathkite@github.com/impv/coding-template.git"
+  },
+  "author": "Impressive",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/impv/coding-template/issues"
+  },
+  "homepage": "https://github.com/impv/coding-template#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "concurrently": "^3.6.1",
+    "eslint": "^5.2.0",
+    "http-server": "^0.11.1",
+    "node-sass": "^4.9.2",
+    "nunjucks-cli": "^0.5.1",
+    "postcss-cli": "^6.0.0"
+  }
+}
