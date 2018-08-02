@@ -1,32 +1,55 @@
 {
-  "name": "wcs",
-  "version": "0.0.1",
-  "description": "Impressive Coding Template",
+  "private": true,
+  "name": "coding-template",
+  "version": "1.0.0",
+  "description": "Coding template for Impressive developers.",
   "main": "index.js",
-  "scripts": {},
-  "repository": {},
-  "author": "impv",
-  "license": "MIT",
-  "bugs": {},
-  "homepage": "",
+  "scripts": {
+    "start": "concurrently 'npm run init' 'npm run watch:css' 'npm run postcss' 'npm run watch:js' 'npm run watch:html' 'npm run watch:static' 'npm run server'",
+    "init": "mkdir -p ./build/js ./build/css",
+    "postcss": "postcss ./build/css/style.css -u autoprefixer -d ./build/css -w",
+    "build:html": "nunjucks '**/*.html' -p ./src/html/ -o ./build -u",
+    "build:css": "node-sass -r --include-path scss ./src/scss/style.scss ./build/css/style.css",
+    "build:js": "babel ./src/babel/index.js -o ./build/js/bundle.js",
+    "build:static": "cp -r ./src/static/* ./build/",
+    "watch:html": "npm run build:html -- -w",
+    "watch:css": "npm run build:css -- -w",
+    "watch:js": "npm run build:js -- -w",
+    "watch:static": "watch 'npm run build:static' ./src/static",
+    "lint:js": "eslint './src/babel/**/*.js'",
+    "server": "browser-sync ./build -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "safari >= 7"
+  ],
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://oathkite@github.com/impv/coding-template.git"
+  },
+  "author": "Impressive",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/impv/coding-template/issues"
+  },
+  "homepage": "https://github.com/impv/coding-template#readme",
+  "dependencies": {},
   "devDependencies": {
-    "babel-eslint": "^4.1.6",
-    "babel-preset-es2015": "^6.3.13",
-    "babelify": "^7.2.0",
-    "browserify": "^13.0.0",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-eslint": "^1.1.1",
-    "gulp-if": "^2.0.0",
-    "gulp-nunjucks": "^2.1.1",
-    "gulp-plumber": "^1.0.1",
-    "gulp-sass": "^2.1.1",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-webserver": "^0.9.1",
-    "minimist": "^1.2.0",
-    "rimraf": "^2.5.0",
-    "run-sequence": "^1.1.5",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "autoprefixer": "^9.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.24.6",
+    "concurrently": "^3.6.1",
+    "eslint": "^5.2.0",
+    "node-sass": "^4.9.2",
+    "nunjucks-cli": "^0.5.1",
+    "postcss-cli": "^6.0.0",
+    "watch": "^1.0.2"
   }
 }
