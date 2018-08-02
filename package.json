@@ -18,6 +18,7 @@
     "watch:static": "watch 'npm run build:static' ./src/static",
     "lint:js": "eslint './src/babel/**/*.js'",
     "server": "browser-sync ./build -w",
+    "clean": "rm -r ./build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": [
