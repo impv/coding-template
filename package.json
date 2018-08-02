@@ -5,12 +5,19 @@
   "description": "Coding template for Impressive developers.",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently 'npm run watch:css' 'npm run postcss' 'npm run watch:js' 'npm run nunjucks'",
+    "start": "concurrently 'npm run init' 'npm run watch:css' 'npm run postcss' 'npm run watch:js' 'npm run watch:html' 'npm run watch:static' 'npm run server'",
+    "init": "mkdir -p ./build/js ./build/css",
     "postcss": "postcss ./build/css/style.css -u autoprefixer -d ./build/css -w",
-    "nunjucks": "nunjucks -w '**/*.html' -p ./src/html/ -o ./build -u",
-    "watch:css": "node-sass -w -r --include-path scss ./src/scss/style.scss ./build/css/style.css && postcss",
-    "watch:js": "mkdir -p ./build/js && babel -w ./src/babel/index.js -o ./build/js/bundle.js",
+    "build:html": "nunjucks '**/*.html' -p ./src/html/ -o ./build -u",
+    "build:css": "node-sass -r --include-path scss ./src/scss/style.scss ./build/css/style.css",
+    "build:js": "babel ./src/babel/index.js -o ./build/js/bundle.js",
+    "build:static": "cp -r ./src/static/* ./build/",
+    "watch:html": "npm run build:html -- -w",
+    "watch:css": "npm run build:css -- -w",
+    "watch:js": "npm run build:js -- -w",
+    "watch:static": "watch 'npm run build:static' ./src/static",
     "lint:js": "eslint './src/babel/**/*.js'",
+    "server": "browser-sync ./build -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": [
@@ -37,11 +44,12 @@
     "autoprefixer": "^9.0.2",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.24.6",
     "concurrently": "^3.6.1",
     "eslint": "^5.2.0",
-    "http-server": "^0.11.1",
     "node-sass": "^4.9.2",
     "nunjucks-cli": "^0.5.1",
-    "postcss-cli": "^6.0.0"
+    "postcss-cli": "^6.0.0",
+    "watch": "^1.0.2"
   }
 }
