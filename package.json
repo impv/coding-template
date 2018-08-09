@@ -5,19 +5,16 @@
   "description": "Coding template for Impressive developers.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build:css && concurrently 'npm run init' 'npm run build:css -- -w' 'npm run postcss' 'npm run build:js -- -w' 'npm run build:html -- -w' 'watch:static' 'npm run server'",
+    "start": "npm run build:css && npm-run-all -p init \"build:css -- -w\" postcss \"build:js -- -w\" \"build:html -- -w\" \"watch 'npm run build:static' ./src/static\" server",
     "init": "mkdir -p ./build/js ./build/css",
     "postcss": "postcss ./build/css/style.css -u autoprefixer -d ./build/css -w",
-    "build": "concurrently 'npm run init' 'npm run build:css' 'npm run postcss' 'npm run build:js' 'npm run build:html' 'npm run build:static'",
     "build:html": "nunjucks '**/*.html' -p ./src/html/ -o ./build -u",
     "build:css": "node-sass ./src/scss/style.scss ./build/css/style.css",
     "build:js": "babel ./src/babel/index.js -o ./build/js/bundle.js",
     "build:static": "cp -r ./src/static/* ./build/",
-    "watch:static": "watch 'npm run build:static' ./src/static",
     "lint:js": "eslint './src/babel/**/*.js'",
-    "server": "browser-sync ./build -w",
-    "clean": "rm -r ./build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "browser-sync start -s './build' -f './build/**/*' -w --no-open",
+    "clean": "rm -r ./build"
   },
   "browserslist": [
     "last 2 versions",
@@ -44,9 +41,9 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.24.6",
-    "concurrently": "^3.6.1",
     "eslint": "^5.2.0",
     "node-sass": "^4.9.2",
+    "npm-run-all": "^4.1.3",
     "nunjucks-cli": "^0.5.1",
     "postcss-cli": "^6.0.0",
     "watch": "^1.0.2"
