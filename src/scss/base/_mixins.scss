@@ -1,4 +1,9 @@
-@mixin media($breakpoint: md, $minmax: min) {
+/*
+ * メディアクエリでスタイルを定義するためのmixin
+ * @param $breakpoint variablesのbreakpointsで定義した閾値
+ * @param $minmax 閾値以上か以下どちらでスタイルを適用するかを判断するための値 (min / max)
+ */
+ @mixin media($breakpoint: md, $minmax: min) {
     @if $minmax == min {
         @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}) {
             @content;
