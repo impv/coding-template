@@ -5,13 +5,14 @@
   "description": "Coding template for Impressive developers.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build:css && npm-run-all -p init \"build:css -- -w\" postcss \"build:js -- -w\" \"build:html -- -w\" \"watch 'npm run build:static' ./src/static\" server",
+    "start": "npm run build:css && npm-run-all -p init \"build:css -- -w\" postcss \"build:js -- -w\" \"build:html -- -w\" watch:static server",
     "init": "mkdir -p ./build/js ./build/css",
     "postcss": "postcss ./build/css/style.css -u autoprefixer -d ./build/css -w",
     "build:html": "nunjucks '**/*.html' -p ./src/html/ -o ./build -u",
     "build:css": "node-sass ./src/scss/style.scss ./build/css/style.css",
     "build:js": "babel ./src/babel/index.js -o ./build/js/bundle.js",
     "build:static": "cp -r ./src/static/* ./build/",
+    "watch:static": "watch 'npm run build:static' ./src/static",
     "lint:js": "eslint './src/babel/**/*.js'",
     "server": "browser-sync start -s './build' -f './build/**/*' -w --no-open",
     "clean": "rm -r ./build"

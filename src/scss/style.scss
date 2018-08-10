@@ -1,1 +1,7 @@
-@import "reset";
+@import "./base/reset";
+@import "./base/variables";
+@import "./base/mixins";
+@import "./base/base";
+
+@import "./layouts/header";
+@import "./layouts/footer";
