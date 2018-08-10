@@ -1,9 +1,9 @@
-@mixin media($breakpoint: md, $highlow: min) {
-    @if $highlow == min {
+@mixin media($breakpoint: md, $minmax: min) {
+    @if $minmax == min {
         @media screen and (min-width: #{map-get($breakpoints, $breakpoint)}) {
             @content;
         }
-    } @else if $highlow == max {
+    } @else if $minmax == max {
         @media screen and (max-width: #{map-get($breakpoints, $breakpoint)}) {
             @content;
         }
