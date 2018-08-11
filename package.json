@@ -5,13 +5,14 @@
   "description": "Coding template for Impressive developers.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build:css && npm-run-all -p init \"build:css -- -w\" postcss \"build:js -- -w\" \"build:html -- -w\" watch:static server",
+    "start": "npm run build:css && npm-run-all -p init \"build:css -- -w\" postcss watch:js \"build:html -- -w\" watch:static server",
     "init": "mkdir -p ./build/js ./build/css",
     "postcss": "postcss ./build/css/style.css -u autoprefixer -d ./build/css -w",
     "build:html": "nunjucks '**/*.html' -p ./src/html/ -o ./build -u",
     "build:css": "node-sass ./src/scss/style.scss ./build/css/style.css",
-    "build:js": "babel ./src/babel/index.js -o ./build/js/bundle.js",
+    "build:js": "browserify ./src/babel/index.js -t babelify -o ./build/js/bundle.js",
     "build:static": "cp -r ./src/static/* ./build/",
+    "watch:js": "watch 'npm run build:js' ./src/babel",
     "watch:static": "watch 'npm run build:static' ./src/static",
     "lint:js": "eslint './src/babel/**/*.js'",
     "server": "browser-sync start -s './build' -f './build/**/*' -w --no-open",
@@ -23,7 +24,7 @@
   ],
   "babel": {
     "presets": [
-      "env"
+      "@babel/preset-env"
     ]
   },
   "repository": {
@@ -38,10 +39,12 @@
   "homepage": "https://github.com/impv/coding-template#readme",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
     "autoprefixer": "^9.0.2",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
+    "babelify": "^9.0.0",
     "browser-sync": "^2.24.6",
+    "browserify": "^16.2.2",
     "eslint": "^5.2.0",
     "node-sass": "^4.9.2",
     "npm-run-all": "^4.1.3",
