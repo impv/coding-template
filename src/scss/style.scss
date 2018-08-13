@@ -3,5 +3,11 @@
 @import "./base/mixins";
 @import "./base/base";
 
+@import "./fontawesome/fontawesome";
+@import "./fontawesome/brands";
+@import "./fontawesome/light";
+@import "./fontawesome/regular";
+@import "./fontawesome/solid";
+
 @import "./layouts/header";
 @import "./layouts/footer";
